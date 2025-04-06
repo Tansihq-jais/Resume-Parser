@@ -22,6 +22,27 @@
 
 
 # 4. CONTINUE WITH THE FOLLOWING CODE...
+import nltk
+import os
+
+# Set NLTK data path to a persistent directory
+nltk_data_path = os.path.join(os.getcwd(), 'nltk_data')
+os.makedirs(nltk_data_path, exist_ok=True)
+nltk.data.path.append(nltk_data_path)
+
+# Download required NLTK data with timeout handling
+try:
+    nltk.download('stopwords', download_dir=nltk_data_path)
+    nltk.download('punkt', download_dir=nltk_data_path)
+    nltk.download('wordnet', download_dir=nltk_data_path)
+except Exception as e:
+    print(f"NLTK download error: {e}")
+    # Try alternative download method
+    import urllib.request
+    import shutil
+    url = "https://raw.githubusercontent.com/nltk/nltk_data/gh-pages/packages/corpora/stopwords.zip"
+    urllib.request.urlretrieve(url, 'stopwords.zip')
+    shutil.unpack_archive('stopwords.zip', nltk_data_path)
 
 import streamlit as st
 import pandas as pd
