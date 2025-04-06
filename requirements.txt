@@ -91,3 +91,6 @@ youtube-dl==2021.12.17
 yt-dlp==2025.3.31
 nltk>=3.8.0
 pyresparser>=1.0.0
+spacy>=3.0.0
+python-docx>=0.8.0  # If processing Word files
+pdfminer.six>=20200517  # If processing PDFs
